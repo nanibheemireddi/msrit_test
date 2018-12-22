@@ -1,0 +1,47 @@
+ <div class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo"> <h3>Login</h3>
+            <!--<a routerLink="/"><b>Admin</b>LTE</a>-->
+                
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg"></p>
+            <form action="" method="" novalidate>
+                <div class="form-group has-feedback" [ngClass]="{'has-error': email.invalid && (email.dirty || email.touched),'has-success': email.valid && (email.dirty || email.touched || submitted) }">
+                     <input type="email" class="form-control" id="email" placeholder="Enter Email" required name="email" [(ngModel)]="model.email" #email="ngModel"
+                       pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$">
+                    <div *ngIf="email.errors && (email.dirty || email.touched)" class="has-error">
+                        <div [hidden]="!email.errors.required" class="has-error">
+                            Email is required!
+                        </div>
+                        <div [hidden]="!email.errors.pattern" class="has-error">
+                            Please enter a valid email!
+                        </div>
+                    </div>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback" [ngClass]="{'has-error': pwd.invalid && (pwd.dirty || pwd.touched),'has-success': pwd.valid && (pwd.dirty || pwd.touched || submitted) }">
+                     <input class="form-control" minlength="6"  type="password" placeholder="Password" id="pwd"  required name="pwd" [(ngModel)]="model.password" #pwd="ngModel" />
+                    <div *ngIf="pwd.errors && (pwd.dirty || pwd.touched)" class="has-error">
+                        <div [hidden]="!pwd.errors.required">
+                            Password is required!
+                        </div>
+                        <div [hidden]="!pwd.errors.minlength" class="has-error">
+                            Please enter a valid password!
+                        </div>
+                    </div>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="text-center mb20">
+                        <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+                    </div>
+                    <div>
+                        <a href="#"  routerLink="/register"  class="set-pages top">Register User</a><br>    
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
